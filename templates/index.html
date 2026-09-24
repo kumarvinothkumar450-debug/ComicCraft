@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ComicCraft - AI Comic Story Creator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f1ff;
+            color: #222;
+        }
+
+        header {
+            background: #5b3cc4;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 38px;
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #5b3cc4;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        textarea,
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #5b3cc4;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #472da5;
+        }
+
+        .story {
+            background: #faf8ff;
+            border-left: 5px solid #5b3cc4;
+            padding: 20px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🎨 ComicCraft</h1>
+        <p>AI Comic Story Creator using Gemini Models</p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>✨ Create Your Comic</h2>
+
+            <form action="/generate" method="post">
+
+                <label>Story Prompt</label>
+
+                <textarea
+                    name="story_prompt"
+                    rows="5"
+                    placeholder="Enter your comic story idea..."
+                    required
+                ></textarea>
+
+                <label>Character Name</label>
+
+                <input
+                    type="text"
+                    name="character_name"
+                    placeholder="Enter character name"
+                >
+
+                <label>Setting</label>
+
+                <input
+                    type="text"
+                    name="setting"
+                    placeholder="e.g. Enchanted Forest"
+                >
+
+                <label>Tone</label>
+
+                <select name="tone">
+                    <option>Adventure</option>
+                    <option>Funny</option>
+                    <option>Fantasy</option>
+                    <option>Emotional</option>
+                </select>
+
+                <label>Art Style</label>
+
+                <select name="art_style">
+                    <option>Comic Book</option>
+                    <option>Cartoon</option>
+                    <option>Anime</option>
+                    <option>Realistic</option>
+                </select>
+
+                <button type="submit">
+                    🚀 Generate Comic
+                </button>
+
+            </form>
+
+        </div>
+
+
+        {% if story %}
+
+        <div class="card">
+
+            <h2>📖 Your Generated Comic</h2>
+
+            <div class="story">
+                {{ story }}
+            </div>
+
+            <form action="/download-pdf" method="post">
+
+                <input
+                    type="hidden"
+                    name="story"
+                    value="{{ story }}"
+                >
+
+                <button type="submit">
+                    📄 Download Comic as PDF
+                </button>
+
+            </form>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <footer>
+        ComicCraft © 2026 | AI Comic Story Creator
+    </footer>
+
+</body>
+
+</html>
