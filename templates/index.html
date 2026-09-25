@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,203 +14,407 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f4f1ff;
-            color: #222;
-        }
-
-        header {
-            background: #5b3cc4;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 38px;
-        }
-
-        header p {
-            margin-top: 8px;
-            font-size: 17px;
+            background: linear-gradient(135deg, #f3e8ff, #e0e7ff);
+            color: #24113d;
         }
 
         .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px;
+            width: min(1100px, 92%);
+            margin: 40px auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 8px;
+            color: #6d28d9;
+        }
+
+        .hero p {
+            color: #5b4b73;
+            font-size: 17px;
         }
 
         .card {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
+            border-radius: 20px;
+            padding: 28px;
             margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(70, 30, 110, 0.12);
         }
 
         .card h2 {
             margin-top: 0;
-            color: #5b3cc4;
+            color: #6d28d9;
         }
 
         label {
             display: block;
-            margin-top: 15px;
-            margin-bottom: 6px;
+            margin-top: 18px;
+            margin-bottom: 7px;
             font-weight: bold;
         }
 
-        textarea,
         input,
+        textarea,
         select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            padding: 13px 15px;
+            border: 2px solid #e5d5ff;
+            border-radius: 12px;
             font-size: 15px;
+            outline: none;
+            background: #faf7ff;
         }
 
         textarea {
+            min-height: 120px;
             resize: vertical;
         }
 
-        button {
-            width: 100%;
-            margin-top: 22px;
-            padding: 14px;
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #8b5cf6;
+        }
+
+        .generate-btn,
+        .pdf-btn {
             border: none;
-            border-radius: 8px;
-            background: #5b3cc4;
-            color: white;
-            font-size: 17px;
+            border-radius: 12px;
+            padding: 14px 22px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 22px;
         }
 
-        button:hover {
-            background: #472da5;
+        .generate-btn {
+            width: 100%;
+            background: #7c3aed;
+            color: white;
         }
 
-        .story {
-            background: #faf8ff;
-            border-left: 5px solid #5b3cc4;
-            padding: 20px;
-            border-radius: 10px;
+        .generate-btn:hover {
+            background: #6d28d9;
+        }
+
+        .pdf-btn {
+            background: #111827;
+            color: white;
+        }
+
+        .pdf-btn:hover {
+            background: #000000;
+        }
+
+        .error {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 25px;
             white-space: pre-wrap;
-            line-height: 1.6;
+            word-break: break-word;
         }
 
-        footer {
+        .panels-title {
             text-align: center;
-            padding: 25px;
-            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .panels-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .panel-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: 0 8px 25px rgba(70, 30, 110, 0.12);
+            overflow: hidden;
+        }
+
+        .panel-card:last-child {
+            grid-column: 1 / -1;
+            max-width: 550px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .panel-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #6d28d9;
+            margin-bottom: 10px;
+        }
+
+        .panel-card img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .story-box {
+            background: #faf7ff;
+            border-radius: 14px;
+            padding: 20px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .footer {
+            text-align: center;
+            color: #6b5b7b;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 750px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .panels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .panel-card:last-child {
+                grid-column: auto;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <header>
+<div class="container">
+
+    <div class="hero">
         <h1>🎨 ComicCraft</h1>
-        <p>AI Comic Story Creator using Gemini Models</p>
-    </header>
-
-    <div class="container">
-
-        <div class="card">
-
-            <h2>✨ Create Your Comic</h2>
-
-            <form action="/generate" method="post">
-
-                <label>Story Prompt</label>
-
-                <textarea
-                    name="story_prompt"
-                    rows="5"
-                    placeholder="Enter your comic story idea..."
-                    required
-                ></textarea>
-
-                <label>Character Name</label>
-
-                <input
-                    type="text"
-                    name="character_name"
-                    placeholder="Enter character name"
-                >
-
-                <label>Setting</label>
-
-                <input
-                    type="text"
-                    name="setting"
-                    placeholder="e.g. Enchanted Forest"
-                >
-
-                <label>Tone</label>
-
-                <select name="tone">
-                    <option>Adventure</option>
-                    <option>Funny</option>
-                    <option>Fantasy</option>
-                    <option>Emotional</option>
-                </select>
-
-                <label>Art Style</label>
-
-                <select name="art_style">
-                    <option>Comic Book</option>
-                    <option>Cartoon</option>
-                    <option>Anime</option>
-                    <option>Realistic</option>
-                </select>
-
-                <button type="submit">
-                    🚀 Generate Comic
-                </button>
-
-            </form>
-
-        </div>
+        <p>Create your own AI-powered comic story</p>
+    </div>
 
 
-        {% if story %}
+    {% if error %}
+    <div class="error">
+        <strong>⚠️ Generation Error</strong>
 
-        <div class="card">
+        <br><br>
 
-            <h2>📖 Your Generated Comic</h2>
+        {{ error }}
+    </div>
+    {% endif %}
 
-            <div class="story">
-                {{ story }}
-            </div>
 
-            <form action="/download-pdf" method="post">
+    <div class="card">
 
-                <input
-                    type="hidden"
-                    name="story"
-                    value="{{ story }}"
-                >
+        <h2>✨ Create Your Comic</h2>
 
-                <button type="submit">
-                    📄 Download Comic as PDF
-                </button>
+        <form action="/generate" method="post">
 
-            </form>
+            <label for="story_prompt">
+                Story Idea
+            </label>
 
-        </div>
+            <textarea
+                id="story_prompt"
+                name="story_prompt"
+                placeholder="Describe your comic story idea..."
+                required
+            >{{ story_prompt | default('') }}</textarea>
 
-        {% endif %}
+
+            <label for="character_name">
+                Character Name
+            </label>
+
+            <input
+                id="character_name"
+                type="text"
+                name="character_name"
+                value="{{ character_name | default('') }}"
+                placeholder="Example: Vinoth"
+                required
+            >
+
+
+            <label for="setting">
+                Setting
+            </label>
+
+            <input
+                id="setting"
+                type="text"
+                name="setting"
+                value="{{ setting | default('') }}"
+                placeholder="Example: Enchanted Forest"
+                required
+            >
+
+
+            <label for="tone">
+                Tone
+            </label>
+
+            <select id="tone" name="tone">
+
+                <option value="Adventure"
+                    {% if tone == "Adventure" %}selected{% endif %}>
+                    Adventure
+                </option>
+
+                <option value="Funny"
+                    {% if tone == "Funny" %}selected{% endif %}>
+                    Funny
+                </option>
+
+                <option value="Mystery"
+                    {% if tone == "Mystery" %}selected{% endif %}>
+                    Mystery
+                </option>
+
+                <option value="Fantasy"
+                    {% if tone == "Fantasy" %}selected{% endif %}>
+                    Fantasy
+                </option>
+
+                <option value="Sci-Fi"
+                    {% if tone == "Sci-Fi" %}selected{% endif %}>
+                    Sci-Fi
+                </option>
+
+            </select>
+
+
+            <label for="art_style">
+                Art Style
+            </label>
+
+            <select id="art_style" name="art_style">
+
+                <option value="Comic Book"
+                    {% if art_style == "Comic Book" %}selected{% endif %}>
+                    Comic Book
+                </option>
+
+                <option value="Anime"
+                    {% if art_style == "Anime" %}selected{% endif %}>
+                    Anime
+                </option>
+
+                <option value="Manga"
+                    {% if art_style == "Manga" %}selected{% endif %}>
+                    Manga
+                </option>
+
+                <option value="Cartoon"
+                    {% if art_style == "Cartoon" %}selected{% endif %}>
+                    Cartoon
+                </option>
+
+                <option value="Cinematic"
+                    {% if art_style == "Cinematic" %}selected{% endif %}>
+                    Cinematic
+                </option>
+
+            </select>
+
+
+            <button
+                type="submit"
+                class="generate-btn"
+            >
+                🚀 Generate Comic
+            </button>
+
+        </form>
 
     </div>
 
 
-    <footer>
-        ComicCraft © 2026 | AI Comic Story Creator
-    </footer>
+    {% if image_paths %}
+
+    <div class="card">
+
+        <h2 class="panels-title">
+            🖼️ Your Comic Panels
+        </h2>
+
+        <div class="panels-grid">
+
+            {% for image in image_paths %}
+
+            <div class="panel-card">
+
+                <div class="panel-number">
+                    Panel {{ loop.index }}
+                </div>
+
+                <img
+                    src="{{ image }}?v={{ loop.index }}"
+                    alt="Comic Panel {{ loop.index }}"
+                >
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+    {% if story %}
+
+    <div class="card">
+
+        <h2>📖 Comic Story</h2>
+
+        <div class="story-box">
+            {{ story }}
+        </div>
+
+
+        <form
+            action="/download-pdf"
+            method="post"
+        >
+
+            <input
+                type="hidden"
+                name="story"
+                value="{{ story }}"
+            >
+
+            <button
+                type="submit"
+                class="pdf-btn"
+            >
+                📄 Download Comic PDF
+            </button>
+
+        </form>
+
+    </div>
+
+    {% endif %}
+
+
+    <div class="footer">
+        Made with ❤️ using ComicCraft AI
+    </div>
+
+</div>
 
 </body>
-
 </html>
